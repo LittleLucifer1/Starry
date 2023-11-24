@@ -8,13 +8,13 @@
 
 （为了方便，我两次的文件名都是`def`）
 
-![](/home/user/Starry/reports/1.png)
+![](/reports/1.png)
 
 #### 实验3.2
 
 ​	修改完`DSCARD_TESTCASES`之后，首先尝试运行程序，发现有错误。借助于上个实验中，我在相关函数中加入的`error`信息，原来是程序将`bin`识别为文件了，在上个实验中，`new_path.path() = /bin/abc`，而这个实验中，`new_path.path() = \bin`。猜测，应该是识别文件和目录的相关代码有些问题。于是，在相关的函数中，找来找去，最终发现，这个`mount.rs`中判断目录的判断语句情况不完全，应该使用`metadata()`去判断。所以就修改了一下这一行，最后有了正确的结果。（还是得理清线索）
 
-![](/home/user/Starry/reports/2.png)
+![](/reports/2.png)
 
 **思考题1.1**：这些代码具体在 `~/.cargo` 下的哪个文件夹？
 
@@ -28,7 +28,7 @@
 
 我选择了`ByteOs`，直接全局搜索`lmbench`，最终应该找到了运行测例的地方。
 
-![](/home/user/Starry/reports/3.png)
+![](/reports/3.png)
 
 **思考题3.1**：为什么要在开头结尾各输出一句，会不会太过重复？（提示：考虑执行出错的情况，或者 `sys_exit` ）
 
